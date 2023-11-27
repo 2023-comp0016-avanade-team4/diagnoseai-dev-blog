@@ -31,3 +31,18 @@ command:
 ``` shell
 date -I'seconds'
 ```
+
+## Adding a blog post
+
+Create a file under `content/posts/`, and add the following front
+matter:
+
+``` markdown
+---
+title: "some title"
+date: <use the date generated from date -I'seconds'>
+---
+```
+
+Image assets should go under `images/`. For more information, please
+consult the hugo docs.
