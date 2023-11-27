@@ -1,4 +1,4 @@
-baseURL = "http://localhost"
+baseURL = "https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/"
 title = "DiagnoseAI Development Blog"
 theme = "hugo-geekblog"
 
