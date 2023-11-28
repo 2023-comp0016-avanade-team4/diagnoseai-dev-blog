@@ -41,8 +41,9 @@ matter:
 ---
 title: "some title"
 date: <use the date generated from date -I'seconds'>
+author: your name here
 ---
 ```
 
-Image assets should go under `images/`. For more information, please
+Image assets should go under `static/images/`. For more information, please
 consult the hugo docs.
