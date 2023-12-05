@@ -1,1 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.120.4">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="Atom"/><updated>2023-11-27T18:13:41+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.120.4">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="Atom"/><updated>2023-12-05T12:48:08+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Week 1 - Architecture Design</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-01/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-01/</id><published>2023-11-13T23:38:32+00:00</published><updated>2023-11-13T23:38:32+00:00</updated><content type="html">
+&lt;p>This week (Monday was 13 November 2023) was reading week, which
+consisted of the deadline for our Human Centered Interface (HCI)
+design slides.&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="hci-deliverable"
+>
+HCI Deliverable
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-01/#hci-deliverable" class="gblog-post__anchor clip flex align-center" aria-label="Anchor HCI Deliverable" href="#hci-deliverable">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>After iterating our sketches and prototype with our client, they were
+fairly happy with the final interactive prototype, which we
+incorporated into our slides.&lt;/p>
+&lt;p>The aforementioned slides can be found via &lt;a
+class="gblog-markdown__link"
+href="/diagnoseai-dev-blog/Report.pdf"
+>this link&lt;/a>. Here is
+a small screenshot of it:&lt;/p>
+&lt;p>&lt;p class="md__image">
+&lt;img src="/diagnoseai-dev-blog/images/2023-11-27_23-51.png" alt="image of first slide of diagnoseai" />
+&lt;/p>
+&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="proof-of-concept-code"
+>
+Proof of Concept code
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-01/#proof-of-concept-code" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Proof of Concept code" href="#proof-of-concept-code">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>To demonstrate the feasibility of this project, we whipped up a script
+that does the following things:&lt;/p>
+&lt;ol>
+&lt;li>Gets triggered by an upload to a Blob storage, via Azure Function Apps.&lt;/li>
+&lt;li>Parses a document, and extracts the text (using &lt;a
+class="gblog-markdown__link"
+href="https://azure.microsoft.com/en-gb/products/ai-services/ai-document-intelligence"
+>Document Intelligence&lt;/a>);&lt;/li>
+&lt;li>Sends the text to a text embedding model, such as
+&lt;code>text-embedding-ada-002&lt;/code> to get embeddings;&lt;/li>
+&lt;li>Store the embeddings into a vector store, such as &lt;a
+class="gblog-markdown__link"
+href="https://azure.microsoft.com/en-gb/products/ai-services/ai-search"
+>Azure AI Search&lt;/a>.&lt;/li>
+&lt;/ol>
+&lt;p>Then, we configured Azure AI Search as a data source to an Azure
+OpenAI deployment, which, for the purposes of demonstration, was
+&lt;code>gpt-35-turbo&lt;/code>.&lt;/p>
+&lt;p>The results were as expected; the model was able to support its
+answers with phrases quoted from the text, and even provided
+references based on the uploaded documents:&lt;/p>
+&lt;p>&lt;p class="md__image">
+&lt;img src="/diagnoseai-dev-blog/images/demo-poc-1.jpg" alt="image of demo response" />
+&lt;/p>
+&lt;/p>
+&lt;p>The code for this is available in &lt;a
+class="gblog-markdown__link"
+href="https://github.com/2023-comp0016-avanade-team4/diagnoseai-core/blob/7910e761ddbae4e76b7115ed9ce519730f93787a/function_app.py"
+>commit 7910e76 (requires
+authorization)&lt;/a>.&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="github"
+>
+GitHub
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-01/#github" class="gblog-post__anchor clip flex align-center" aria-label="Anchor GitHub" href="#github">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>We set up a GitHub organisation account containing our code (and this
+blog), and shared it with our IXN mentor.&lt;/p>
+&lt;p>The GitHub organisation can be found via &lt;a
+class="gblog-markdown__link"
+href="https://github.com/orgs/2023-comp0016-avanade-team4"
+>this
+link&lt;/a>.&lt;/p>
+&lt;p>We also share a Kanban board, which can be found
+&lt;a
+class="gblog-markdown__link"
+href="https://github.com/orgs/2023-comp0016-avanade-team4/projects/2"
+>here&lt;/a>.&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="next-week"
+>
+Next week
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-01/#next-week" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Next week" href="#next-week">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>We decided to start drawing up some requirements, and create an
+overall systems architecture diagram to better communicate what we
+want to achieve by the end of the project.&lt;/p></content></entry></feed>
