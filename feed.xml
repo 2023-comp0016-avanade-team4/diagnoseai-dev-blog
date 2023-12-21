@@ -1,4 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.120.4">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="Atom"/><updated>2023-12-05T12:48:08+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Week 1 - Architecture Design</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-01/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-01/</id><published>2023-11-13T23:38:32+00:00</published><updated>2023-11-13T23:38:32+00:00</updated><content type="html">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.121.1">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="Atom"/><updated>2023-12-21T12:24:24+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Week 2 - Gathering requirements</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-02/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-02/</id><published>2023-11-20T00:00:00+00:00</published><updated>2023-11-20T00:00:00+00:00</updated><content type="html">
+&lt;p>This week (Monday was 20 November 2023) first week after the reading week, was primarily focused on gathering and formalizing client requirements and presenting a finalised requirements document to the client. Additionally, time was spent into breaking down the tasks required to develop the Core, Uploader and Web systems.&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="requirements-document"
+>
+Requirements document
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-02/#requirements-document" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Requirements document" href="#requirements-document">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>Having estimated the time and effort it would require to implement the different features proposed to the client we came up with a formal requirement documents.&lt;/p>
+&lt;p>Definitions were established for different features and stakeholders in the project. To avoid any ambiguity in the intepretation of the requirements document.&lt;/p>
+&lt;p>Further, the requirements were broken down into functional, non-functional, system and user requirements. In addition, care was taken to distinguish the requirements that the system has to have and those that are optional using the keywords shall and should.&lt;/p>
+&lt;p>The aforementioned requirements document can be found via &lt;a
+class="gblog-markdown__link"
+href="/diagnoseai-dev-blog/Requirements.pdf"
+>this link&lt;/a>&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="task-breakdown"
+>
+Task breakdown
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-02/#task-breakdown" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Task breakdown" href="#task-breakdown">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>Tasks for developing the three main aspects of the project i.e. Uploader, Web and , Core were identified. These tasks were added to the Kanban project board with the appropriate links.&lt;/p>
+&lt;p>The Kanban board can be found &lt;a
+class="gblog-markdown__link"
+href="https://github.com/orgs/2023-comp0016-avanade-team4/projects/2"
+>here&lt;/a>. Here is a screenshot of the todo section: &lt;p class="md__image">
+&lt;img src="/diagnoseai-dev-blog/images/kanban-todo.png" alt="Image of todo section of the kanban" />
+&lt;/p>
+&lt;/p></content></entry><entry><title>Week 1 - Architecture Design</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-01/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-01/</id><published>2023-11-13T23:38:32+00:00</published><updated>2023-11-13T23:38:32+00:00</updated><content type="html">
 &lt;p>This week (Monday was 13 November 2023) was reading week, which
 consisted of the deadline for our Human Centered Interface (HCI)
 design slides.&lt;/p>
