@@ -1,4 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.121.1">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="Atom"/><updated>2023-12-21T12:24:24+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Week 2 - Gathering requirements</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-02/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-02/</id><published>2023-11-20T00:00:00+00:00</published><updated>2023-11-20T00:00:00+00:00</updated><content type="html">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.121.2">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="Atom"/><updated>2024-01-15T10:51:24+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Christmas Blog - Conversation history and validation chat</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-05/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-05/</id><published>2023-12-20T00:00:00+00:00</published><updated>2023-12-20T00:00:00+00:00</updated><content type="html">
+&lt;p>This Christmas break (Starting from 21st December 2023 to 9th January 2024) the team had a much lighter workload during the holidays. However, time was still spent working on these core functionalities including development of a validation chat user interface, enabling conversation history for client chat, and , creation of an Image vectorization endpoint.&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="validation-chat-user-interface"
+>
+Validation Chat User Interface
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-05/#validation-chat-user-interface" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Validation Chat User Interface" href="#validation-chat-user-interface">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>Having developed the document upload and vectorization features the focus was now on developing the validation chat user interface. The validation chat is a part of Uploader web app and is used to validate the language model&amp;rsquo;s understanding of the manuals uploaded.&lt;/p>
+&lt;p>The interface consists of validation chat message interface and two display components rendering the extracted images and text from the document uploaded. Here&amp;rsquo;s a screenshot of the validation chat:&lt;/p>
+&lt;p>&lt;p class="md__image">
+&lt;img src="/diagnoseai-dev-blog/images/validation-chat.jpeg" alt="Image of the validation chat user interface" />
+&lt;/p>
+&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="conversation-history"
+>
+Conversation History
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-05/#conversation-history" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Conversation History" href="#conversation-history">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>In an on field situation, there are multiple factors that a language model will need to keep in mind when suggesting solutions to the problems at hand. Consequently, it is important that the language model is capable of accessing the conversation history.&lt;/p>
+&lt;p>After a discussion with the IXN project mentor to better understand the requirements, the team settled on using a conversation history window of ten messages as this was suited to the client requirements.&lt;/p>
+&lt;p>Here&amp;rsquo;s a screenshot of the client chat accessing the conversation history.&lt;/p>
+&lt;p>&lt;p class="md__image">
+&lt;img src="/diagnoseai-dev-blog/images/client-conv-history.jpeg" alt="Image of the client chat accessing conversation history" />
+&lt;/p>
+&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="image-vectorization"
+>
+Image Vectorization
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-05/#image-vectorization" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Image Vectorization" href="#image-vectorization">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>Another important aspect of the validation chat is the ability to vectorize the extracted images. Hence, a core API feature had to be developed to accept images and upload them into a specified vector index.&lt;/p>
+&lt;p>To achieve this the image was sent to a GPT4-V vision model which generated a text summary of the image. The model was prompted to create a summary that could later be used for image based content retrieval. Here&amp;rsquo;s a screenshot of the standard request contents to the vision model.&lt;/p>
+&lt;p>&lt;p class="md__image">
+&lt;img src="/diagnoseai-dev-blog/images/vision-model-prompt.png" alt="Image of the request body being sent to the language model" />
+&lt;/p>
+&lt;/p>
+&lt;p>Further, the text generated was vectorized and its embedding was uploaded to the Azure cognitive search index specified in the request body.&lt;/p></content></entry><entry><title>Week 2 - Gathering requirements</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-02/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-02/</id><published>2023-11-20T00:00:00+00:00</published><updated>2023-11-20T00:00:00+00:00</updated><content type="html">
 &lt;p>This week (Monday was 20 November 2023) first week after the reading week, was primarily focused on gathering and formalizing client requirements and presenting a finalised requirements document to the client. Additionally, time was spent into breaking down the tasks required to develop the Core, Uploader and Web systems.&lt;/p>
 &lt;div class="flex align-center gblog-post__anchorwrap">
 &lt;h1 id="requirements-document"
