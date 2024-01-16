@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.121.2">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="Atom"/><updated>2024-01-15T10:51:24+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Christmas Blog - Conversation history and validation chat</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-05/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-05/</id><published>2023-12-20T00:00:00+00:00</published><updated>2023-12-20T00:00:00+00:00</updated><content type="html">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.121.2">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="Atom"/><updated>2024-01-16T11:46:48+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Christmas Blog - Conversation history and validation chat</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-05/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-05/</id><published>2023-12-20T00:00:00+00:00</published><updated>2023-12-20T00:00:00+00:00</updated><content type="html">
 &lt;p>This Christmas break (Starting from 21st December 2023 to 9th January 2024) the team had a much lighter workload during the holidays. However, time was still spent working on these core functionalities including development of a validation chat user interface, enabling conversation history for client chat, and , creation of an Image vectorization endpoint.&lt;/p>
 &lt;div class="flex align-center gblog-post__anchorwrap">
 &lt;h1 id="validation-chat-user-interface"
@@ -46,7 +46,83 @@ Image Vectorization
 &lt;img src="/diagnoseai-dev-blog/images/vision-model-prompt.png" alt="Image of the request body being sent to the language model" />
 &lt;/p>
 &lt;/p>
-&lt;p>Further, the text generated was vectorized and its embedding was uploaded to the Azure cognitive search index specified in the request body.&lt;/p></content></entry><entry><title>Week 2 - Gathering requirements</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-02/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-02/</id><published>2023-11-20T00:00:00+00:00</published><updated>2023-11-20T00:00:00+00:00</updated><content type="html">
+&lt;p>Further, the text generated was vectorized and its embedding was uploaded to the Azure cognitive search index specified in the request body.&lt;/p></content></entry><entry><title>Week 4 - Video</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-04/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-04/</id><published>2023-12-12T00:00:00+00:00</published><updated>2023-12-12T00:00:00+00:00</updated><content type="html">
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="core-api"
+>
+Core API
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-04/#core-api" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Core API" href="#core-api">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>The proof-of-concept code mentioned in &lt;a
+class="gblog-markdown__link"
+href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-01/"
+>the first
+week&lt;/a> was used as a reference to write the chat
+management component of CoreAPI.&lt;/p>
+&lt;p>In particular, we implemented the following flow:&lt;/p>
+&lt;ol>
+&lt;li>A WebSocket proxy to the model via Azure WebPubSub Service, which
+triggers a function running on Azure Function App.&lt;/li>
+&lt;li>The Azure Function App connects to the Azure OpenAI model, much
+like what was implemented in Proof of Concept. This means that the
+model has access to Azure Cognitive Search, which is currently
+acting as our vector database.&lt;/li>
+&lt;li>This WebSocket proxy is connected to the front-end UI to provide an
+instant-messaging like interface.&lt;/li>
+&lt;/ol>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="uis"
+>
+UIs
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-04/#uis" class="gblog-post__anchor clip flex align-center" aria-label="Anchor UIs" href="#uis">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>While Figma generates good-looking UI, the generated code is
+unserviceable. Hence, both the Uploader interfaces and Chat interfaces
+were reworked to include original components.&lt;/p>
+&lt;p>The instant-messaging and uploading functionality were made
+functional. The following flow was implemented:&lt;/p>
+&lt;ol>
+&lt;li>Uploading - Files are now uploaded to a container on a Azure
+Storage Account, which is then processed by a Azure Function App.&lt;/li>
+&lt;li>The Azure Function App vectorizes the blob with the
+&lt;code>text-embedding-ada-002&lt;/code> model, and stores the vectors within Azure
+Cognitive Search.&lt;/li>
+&lt;li>Chatting - When the model is invoked via CoreAPI, the model
+connects to the same Azure Cognitive Search service to obtain
+relevant documentation whenever required.&lt;/li>
+&lt;/ol>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="video"
+>
+Video
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-04/#video" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Video" href="#video">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>A video was created to demo the progress made thus far:&lt;/p>
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/4eF8jrSBjlU?si=Y9TLpTn2iyxHKrkX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>&lt;/iframe>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="christmas"
+>
+Christmas
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-04/#christmas" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Christmas" href="#christmas">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>Over the Christmas break, we will focus on the following components:&lt;/p>
+&lt;ol>
+&lt;li>Validation Chat User Interface&lt;/li>
+&lt;li>User Conversation History (at the moment, it is not stored)&lt;/li>
+&lt;li>Image Vectorization&lt;/li>
+&lt;/ol></content></entry><entry><title>Week 2 - Gathering requirements</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-02/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-02/</id><published>2023-11-20T00:00:00+00:00</published><updated>2023-11-20T00:00:00+00:00</updated><content type="html">
 &lt;p>This week (Monday was 20 November 2023) first week after the reading week, was primarily focused on gathering and formalizing client requirements and presenting a finalised requirements document to the client. Additionally, time was spent into breaking down the tasks required to develop the Core, Uploader and Web systems.&lt;/p>
 &lt;div class="flex align-center gblog-post__anchorwrap">
 &lt;h1 id="requirements-document"
