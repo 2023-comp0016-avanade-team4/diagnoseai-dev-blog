@@ -1,4 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.121.2">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="Atom"/><updated>2024-01-16T11:46:48+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Christmas Blog - Conversation history and validation chat</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-05/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-05/</id><published>2023-12-20T00:00:00+00:00</published><updated>2023-12-20T00:00:00+00:00</updated><content type="html">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.122.0">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="Atom"/><updated>2024-01-30T09:13:33+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Week 6 - Elevator Pitch</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-06/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-06/</id><published>2024-01-12T00:00:00+00:00</published><updated>2024-01-12T00:00:00+00:00</updated><content type="html">
+&lt;p>When it comes to technology projects, effectively communicating your idea is as important as the technical work itself. This was the challenge we faced in preparing for the Elevator Pitch. Our goal was to create a concise, two-minute presentation that clearly conveyed our project&amp;rsquo;s objectives, outlined the problems we&amp;rsquo;re tackling, and our proposed solution.&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="the-preparation"
+>
+The Preparation
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-06/#the-preparation" class="gblog-post__anchor clip flex align-center" aria-label="Anchor The Preparation" href="#the-preparation">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>Our preparation for the Elevator Pitch involved distilling complex concepts into clear, concise points. We focused on what mattered most, without delving too deeply into the technical aspects.&lt;/p>
+&lt;p>Given the tight time limit, our content had to be carefully selected. We included:&lt;/p>
+&lt;ul>
+&lt;li>A clear definition of the problem and our approach to solving it&lt;/li>
+&lt;li>A brief overview of the user interfaces and explanations on how they will be used&lt;/li>
+&lt;li>A snapshot of our intended deliverables together with a (simplified) architecture diagram&lt;/li>
+&lt;li>Potential future steps and how the clients can customise the project&lt;/li>
+&lt;/ul>
+&lt;p>Below is the slide deck used for the pitch:&lt;/p>
+&lt;iframe src="/diagnoseai-dev-blog/elevator.pdf#navpanes=0&amp;zoom=80" style="width:820px; height:570px;" frameborder="0">&lt;/iframe>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="the-live-presentation"
+>
+The Live Presentation
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-06/#the-live-presentation" class="gblog-post__anchor clip flex align-center" aria-label="Anchor The Live Presentation" href="#the-live-presentation">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>The pitch was online via Zoom, with the module lead and IXN partner present. It was test of our preparation, and the rehearsal process paid off. James delivered our presentation with clarity and confidence, effectively communicating our project&amp;rsquo;s vision and potential.&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="reflections-and-moving-forward"
+>
+Reflections and Moving Forward
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-06/#reflections-and-moving-forward" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Reflections and Moving Forward" href="#reflections-and-moving-forward">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>This experience taught us valuable lessons in communication. It highlighted the importance of being clear and direct in presenting complex technical projects. The Elevator Pitch was a brief but significant part of our project&amp;rsquo;s journey, providing us with insights that will benefit our development process moving forward.&lt;/p></content></entry><entry><title>Christmas Blog - Conversation history and validation chat</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-05/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-05/</id><published>2023-12-20T00:00:00+00:00</published><updated>2023-12-20T00:00:00+00:00</updated><content type="html">
 &lt;p>This Christmas break (Starting from 21st December 2023 to 9th January 2024) the team had a much lighter workload during the holidays. However, time was still spent working on these core functionalities including development of a validation chat user interface, enabling conversation history for client chat, and , creation of an Image vectorization endpoint.&lt;/p>
 &lt;div class="flex align-center gblog-post__anchorwrap">
 &lt;h1 id="validation-chat-user-interface"
