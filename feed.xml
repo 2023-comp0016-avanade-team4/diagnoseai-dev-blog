@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.122.0">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="Atom"/><updated>2024-01-30T09:13:33+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Week 6 - Elevator Pitch</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-06/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-06/</id><published>2024-01-12T00:00:00+00:00</published><updated>2024-01-12T00:00:00+00:00</updated><content type="html">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.122.0">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="Atom"/><updated>2024-01-30T13:07:15+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Week 6 - Elevator Pitch</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-06/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-06/</id><published>2024-01-12T00:00:00+00:00</published><updated>2024-01-12T00:00:00+00:00</updated><content type="html">
 &lt;p>When it comes to technology projects, effectively communicating your idea is as important as the technical work itself. This was the challenge we faced in preparing for the Elevator Pitch. Our goal was to create a concise, two-minute presentation that clearly conveyed our project&amp;rsquo;s objectives, outlined the problems we&amp;rsquo;re tackling, and our proposed solution.&lt;/p>
 &lt;div class="flex align-center gblog-post__anchorwrap">
 &lt;h1 id="the-preparation"
@@ -162,7 +162,61 @@ Christmas
 &lt;li>Validation Chat User Interface&lt;/li>
 &lt;li>User Conversation History (at the moment, it is not stored)&lt;/li>
 &lt;li>Image Vectorization&lt;/li>
-&lt;/ol></content></entry><entry><title>Week 2 - Gathering requirements</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-02/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-02/</id><published>2023-11-20T00:00:00+00:00</published><updated>2023-11-20T00:00:00+00:00</updated><content type="html">
+&lt;/ol></content></entry><entry><title>Week 3 - UI's and Backend Development</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-03/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-03/</id><published>2023-12-05T00:00:00+00:00</published><updated>2023-12-05T00:00:00+00:00</updated><content type="html">
+&lt;p>This week marks the start of development, having established the requirements with the client. We focused mainly on building the individual components - UI&amp;rsquo;s and document storage and processing, but also made a start on integration.&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="user-interfaces"
+>
+User Interfaces
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-03/#user-interfaces" class="gblog-post__anchor clip flex align-center" aria-label="Anchor User Interfaces" href="#user-interfaces">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>There was a big emphasis on user interface implementation for week 3. The chat webapp interface was originally designed using React. We then decided that this was unsuitable because of the nature of the project (communication with the chat backend). Hence the webapp was transitioned to Next.js and now offers server-side rendering, and more importanty - secure API calls without exposing keys.&lt;/p>
+&lt;p>Below is the current version of our uploader interface:&lt;/p>
+&lt;img src="chat_webapp.png" alt="Image of the chat webapp" width=440>
+&lt;p>The first design of the uploader was also developed this week from the Figma mock.&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="blob-storage-and-cognitive-search"
+>
+Blob Storage and Cognitive Search
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-03/#blob-storage-and-cognitive-search" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Blob Storage and Cognitive Search" href="#blob-storage-and-cognitive-search">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>We decided that 2 Blob Storage containers will be used. The first one called &amp;ldquo;verification&amp;rdquo; will only have 1 document in it at a time. The document comes from the uploader and all the text will be extracted for verification purposes. The user can view and inquire about this text, and if the document is approved it will be moved to the &amp;ldquo;production&amp;rdquo; containter, where all the approved documents are stored.&lt;/p>
+&lt;p>In order to access our knowledge base we deployed a Cognitive Search model to index of all the aproved documents and query (through vector search). The embeddings model ada-002 is used to generate all the vector representations of the documents so that they can be added to the index.&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="integration"
+>
+Integration
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-03/#integration" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Integration" href="#integration">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>In terms of integration, this week we prioritised two key areas:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Chat Integration: connecting the Next.js frontend to our backend through WebSockets. This approach was favoured because of the reliablity and low latency of WebSockets&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Uploader and Blob Storage: a crucial connection, enabling the smooth transfer of data from our uploader to blob storage. This integration is vital for data processing, forming a core part of our system&amp;rsquo;s architecture.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="ci"
+>
+CI
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-03/#ci" class="gblog-post__anchor clip flex align-center" aria-label="Anchor CI" href="#ci">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>In addition to all the frontend and backend development we have set up CI through GitHub Actions on the dev-blog repository.
+The workflow activates when changes are pushed to main or a pull request is made. Its purpose is to verify that the blog can be built and deployed correctly.&lt;/p></content></entry><entry><title>Week 2 - Gathering requirements</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-02/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-02/</id><published>2023-11-20T00:00:00+00:00</published><updated>2023-11-20T00:00:00+00:00</updated><content type="html">
 &lt;p>This week (Monday was 20 November 2023) first week after the reading week, was primarily focused on gathering and formalizing client requirements and presenting a finalised requirements document to the client. Additionally, time was spent into breaking down the tasks required to develop the Core, Uploader and Web systems.&lt;/p>
 &lt;div class="flex align-center gblog-post__anchorwrap">
 &lt;h1 id="requirements-document"
