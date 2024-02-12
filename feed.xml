@@ -1,4 +1,181 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.122.0">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="Atom"/><updated>2024-01-30T13:07:15+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Week 6 - Elevator Pitch</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-06/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-06/</id><published>2024-01-12T00:00:00+00:00</published><updated>2024-01-12T00:00:00+00:00</updated><content type="html">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.122.0">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="Atom"/><updated>2024-02-12T14:17:16+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Week 7 - Authentication</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-07/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-07/</id><published>2024-01-19T00:00:00+00:00</published><updated>2024-01-19T00:00:00+00:00</updated><content type="html">
+&lt;p>This week, the team implemented authentication with Clerk, in an
+effort to be internet-ready by early February. This will be a key
+milestone to deploy the project safely.&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="background"
+>
+Background
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-07/#background" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Background" href="#background">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>This project was created for Avanade&amp;rsquo;s client companies, hence, there
+are a myriad of authentication systems that they may use.&lt;/p>
+&lt;p>It is hence reasoned (and confirmed with their engineers) that we can
+leverage any authentication system we wanted, because it will be
+modified to the individual client&amp;rsquo;s needs.&lt;/p>
+&lt;p>Hence, there shouldn&amp;rsquo;t be a focus on building a nice-looking UI,
+because chances are, the software will be integrated into an existing
+SSO system, like Microsoft Entra, or Keycloak.&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="choices"
+>
+Choices
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-07/#choices" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Choices" href="#choices">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>We were allowed (by our client) to choose between many authentication
+systems, namely:&lt;/p>
+&lt;ul>
+&lt;li>Clerk (which we ended up with)&lt;/li>
+&lt;li>NextAuth&lt;/li>
+&lt;li>Supabase&lt;/li>
+&lt;li>Auth0&lt;/li>
+&lt;/ul>
+&lt;p>To consider this, we had the following criteria:&lt;/p>
+&lt;ol>
+&lt;li>Easy to integrate with CoreAPI&lt;/li>
+&lt;li>Guards all resources with relatively minimal effort&lt;/li>
+&lt;li>Comes with built-in UI components&lt;/li>
+&lt;/ol>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h2 id="criteria-1-easy-to-integrate-with-coreapi"
+>
+Criteria 1: Easy to integrate with CoreAPI
+&lt;/h2>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-07/#criteria-1-easy-to-integrate-with-coreapi" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Criteria 1: Easy to integrate with CoreAPI" href="#criteria-1-easy-to-integrate-with-coreapi">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>CoreAPI, being serverless, must be able to authenticate the user as
+quickly as possible, with minimal effort. When it comes to security,
+we like to reduce our attack surface by relying on a more well-funded,
+and battle-tested third party.&lt;/p>
+&lt;p>As an additional consideration factor, CoreAPI is written in Python;
+hence, the authentication method must be easily implemented in Python.&lt;/p>
+&lt;p>All four options fulfilled this criteria pretty easily:&lt;/p>
+&lt;ol>
+&lt;li>Clerk uses JWT tokens, which can be easily verified with a public
+key&lt;/li>
+&lt;li>NextAuth is essentially an adapter over many authentication
+services, and Clerk is one of them; hence, verification is more or
+less the same as Clerk&lt;/li>
+&lt;li>Supabase provides a Python SDK to obtain the user session, which
+implies verification&lt;/li>
+&lt;li>Auth0 has a Python SDK that seems to center around Flask, but
+internally uses JWT, which hence makes verification the same as
+NextAuth&lt;/li>
+&lt;/ol>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h2 id="criteria-2-guards-all-resources-with-relatively-minimal-effort"
+>
+Criteria 2: Guards all resources with relatively minimal effort
+&lt;/h2>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-07/#criteria-2-guards-all-resources-with-relatively-minimal-effort" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Criteria 2: Guards all resources with relatively minimal effort" href="#criteria-2-guards-all-resources-with-relatively-minimal-effort">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>All four authentication systems have native &lt;code>Next.js&lt;/code> components
+support, which makes integrating with the two frontends relatively
+simple.&lt;/p>
+&lt;p>With JWT support, guarding CoreAPI endpoints can be done via a
+primitive method of introducing a guard clause written as a utility
+function.&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h2 id="criteria-3-built-in-ui-components"
+>
+Criteria 3: Built-in UI components
+&lt;/h2>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-07/#criteria-3-built-in-ui-components" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Criteria 3: Built-in UI components" href="#criteria-3-built-in-ui-components">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>Clerk, NextAuth and Auth0 comes with their own UI components.&lt;/p>
+&lt;p>Of the three, Clerk comes built-in with the most UI components,
+including:&lt;/p>
+&lt;ul>
+&lt;li>A default, unbranded login / signup screen (NextAuth and Auth0 has
+this as well)&lt;/li>
+&lt;li>A &lt;code>UserButton&lt;/code>, shown in a later screenshot&lt;/li>
+&lt;/ul>
+&lt;p>Based on &lt;a
+class="gblog-markdown__link"
+href="https://supabase.com/docs/guides/auth/auth-helpers/nextjs"
+>the
+Supabase&lt;/a>
+docs, it appears that we would have to create the authentication UI on
+our own. Furthermore, it seems that the developer would have to manage
+the authentication cookies (by default, authentication data is stored
+in Local Storage); while this isn&amp;rsquo;t complex and a deal-breaker, it
+would be nice if library did this on their own.&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h2 id="bonus-criteria-simplicity"
+>
+Bonus Criteria: Simplicity
+&lt;/h2>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-07/#bonus-criteria-simplicity" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Bonus Criteria: Simplicity" href="#bonus-criteria-simplicity">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>This means that we now have to perform a 3-way tie-breaker between
+Clerk, NextAuth and Auth0.&lt;/p>
+&lt;p>NextAuth is the most flexible authentication framework, as it can use
+many providers, &lt;em>including&lt;/em> Clerk. However, it does not provide the
+same UI components as Clerk does (&lt;code>UserButton&lt;/code>, in particular), and
+requires almost no configuration, other than setting it up as a
+provider and middleware.&lt;/p>
+&lt;p>Clerk is the simplest authentication framework, and is what NextAuth
+calls a &lt;em>Hosted Auth&lt;/em>. This means all user information, including
+avatar URLs, usernames and passwords are stored on Clerk, washing our
+hands of the responsibility.&lt;/p>
+&lt;p>Auth0 functions similarly to Clerk, minus the nice components we get
+for free.&lt;/p>
+&lt;p>Hence, we chose to use Clerk.&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="result"
+>
+Result
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-07/#result" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Result" href="#result">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>We now have authentication for the dashboard, chatting interface, and
+backend!&lt;/p>
+&lt;p>The following image shows the &lt;code>UserButton&lt;/code> component on our Uploader
+interface:&lt;/p>
+&lt;p>&lt;p class="md__image">
+&lt;img src="/diagnoseai-dev-blog/images/2024-01-28_11-35.png" alt="Authentication User Button" />
+&lt;/p>
+&lt;/p>
+&lt;p>And the following shows the CoreAPI utility function to verify the JWT
+token:&lt;/p>
+&lt;p>&lt;p class="md__image">
+&lt;img src="/diagnoseai-dev-blog/images/2024-01-28_11-37.png" alt="CoreAPI Authentication" />
+&lt;/p>
+&lt;/p>
+&lt;p>Clerk is currently on allow-list mode, meaning no new sign-ups can
+take place. This will allow us to deploy a demonstration safely onto
+the internet.&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="next-steps"
+>
+Next Steps
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-07/#next-steps" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Next Steps" href="#next-steps">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>An important step is also &lt;em>authorization&lt;/em>, which we have been reminded
+is distinct from &lt;em>authentication&lt;/em>. For now, this is not seen as a
+priority, because the software is still relatively simple.&lt;/p>
+&lt;p>Our next step is to move vectors from the validation index to the
+production index, so that the knowledge base has access to all
+production documents during an interaction.&lt;/p></content></entry><entry><title>Week 6 - Elevator Pitch</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-06/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-06/</id><published>2024-01-12T00:00:00+00:00</published><updated>2024-01-12T00:00:00+00:00</updated><content type="html">
 &lt;p>When it comes to technology projects, effectively communicating your idea is as important as the technical work itself. This was the challenge we faced in preparing for the Elevator Pitch. Our goal was to create a concise, two-minute presentation that clearly conveyed our project&amp;rsquo;s objectives, outlined the problems we&amp;rsquo;re tackling, and our proposed solution.&lt;/p>
 &lt;div class="flex align-center gblog-post__anchorwrap">
 &lt;h1 id="the-preparation"
