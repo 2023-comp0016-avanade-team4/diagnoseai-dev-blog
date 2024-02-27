@@ -30,9 +30,8 @@ polishes described below:
   images below.
 
   Image path:
-  <!-- ![Image of new image send UI](images/img_path.png) -->
+
   <img src="img_path.png" alt="Image of new image send UI" width=860>
-  <!-- ![Image of photo processing](images/processing_img.png) -->
 
   Temporary bot message:
 
