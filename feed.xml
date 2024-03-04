@@ -1,4 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.123.6">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="atom"/><updated>2024-03-01T15:47:17+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Week 8 - Chat feature and security improvements, Optimising Cognitive search indices</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-08/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-08/</id><published>2024-01-23T00:00:00+00:00</published><updated>2024-01-23T00:00:00+00:00</updated><content type="html">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.123.7">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="atom"/><updated>2024-03-04T15:54:58+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Week 11 - Continuing Work Orders</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-11/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-11/</id><published>2024-02-19T00:00:00+00:00</published><updated>2024-02-19T00:00:00+00:00</updated><content type="html">
+&lt;p>This week (Monday was 19 November 2024) was spent continuing the Work we started last week on Work Orders. Further work was needed in developing the Work Orders in the Uploader and Web App pages.&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="work-orders-in-uploader"
+>
+Work Orders in Uploader
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-11/#work-orders-in-uploader" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Work Orders in Uploader" href="#work-orders-in-uploader">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>During the previous week, the front-end UI for the uploader page was successfully created. However, for Work Orders to be fully implemented onto the Uploader page a few key tasks were stil required:&lt;/p>
+&lt;ul>
+&lt;li>API endpoints to create and delete Work Orders and to fetch the available Machines&lt;/li>
+&lt;li>Global State management system to store selected Machine from upload to validation page&lt;/li>
+&lt;/ul>
+&lt;p>Here are a few code snippets from the aforementioned tasks:&lt;/p>
+&lt;p>Code snippet of API endpoint to fetch machines:&lt;/p>
+&lt;p>&lt;p class="md__image">
+&lt;img src="/diagnoseai-dev-blog/images/fetch-machines-api.png" alt="Image of the Fetch Machines API code" />
+&lt;/p>
+&lt;/p>
+&lt;p>Code snippet of Global Storage with redux:
+&lt;p class="md__image">
+&lt;img src="/diagnoseai-dev-blog/images/redux-store.png" alt="Image of the Global state management code snippet" />
+&lt;/p>
+&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="work-orders-in-webapp"
+>
+Work Orders in WebApp
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-11/#work-orders-in-webapp" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Work Orders in WebApp" href="#work-orders-in-webapp">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>Similar to the Uploader page, the front-end for the Work orders was created in the Web App last week. However, more work was needed to fetch and provide the Work Order details to the front end.&lt;/p>
+&lt;ul>
+&lt;li>Creation of a context to provide the chat with work order selection details&lt;/li>
+&lt;li>Creation of an API endpoint to fetch the Work orders&lt;/li>
+&lt;/ul>
+&lt;p>Here are a few code snippets from the aforementioned tasks:&lt;/p>
+&lt;p>Code snippet of the API endpoint to fetch Work Orders:
+&lt;p class="md__image">
+&lt;img src="/diagnoseai-dev-blog/images/work-order-api.png" alt="Image of the WorkOrders endpoint" />
+&lt;/p>
+&lt;/p>
+&lt;p>Code snippet of the Work Order context:
+&lt;p class="md__image">
+&lt;img src="/diagnoseai-dev-blog/images/work-order-context.png" alt="Image of the Work Order context" />
+&lt;/p>
+&lt;/p></content></entry><entry><title>Week 8 - Chat feature and security improvements, Optimising Cognitive search indices</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-08/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-08/</id><published>2024-01-23T00:00:00+00:00</published><updated>2024-01-23T00:00:00+00:00</updated><content type="html">
 &lt;p>This week (Monday was 22 January 2024) was focused on three key aspects of project development. Improving security of API keys in the webapp, enabling image support for the chat API, and migrating documents from validation vector indices into production.&lt;/p>
 &lt;div class="flex align-center gblog-post__anchorwrap">
 &lt;h1 id="api-key-security"
