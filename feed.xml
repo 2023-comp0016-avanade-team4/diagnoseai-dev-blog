@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.123.7">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="atom"/><updated>2024-03-04T15:54:58+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Week 11 - Continuing Work Orders</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-11/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-11/</id><published>2024-02-19T00:00:00+00:00</published><updated>2024-02-19T00:00:00+00:00</updated><content type="html">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.123.7">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="atom"/><updated>2024-03-05T14:19:27+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Week 11 - Continuing Work Orders</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-11/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-11/</id><published>2024-02-19T00:00:00+00:00</published><updated>2024-02-19T00:00:00+00:00</updated><content type="html">
 &lt;p>This week (Monday was 19 November 2024) was spent continuing the Work we started last week on Work Orders. Further work was needed in developing the Work Orders in the Uploader and Web App pages.&lt;/p>
 &lt;div class="flex align-center gblog-post__anchorwrap">
 &lt;h1 id="work-orders-in-uploader"
@@ -49,7 +49,123 @@ Work Orders in WebApp
 &lt;p class="md__image">
 &lt;img src="/diagnoseai-dev-blog/images/work-order-context.png" alt="Image of the Work Order context" />
 &lt;/p>
-&lt;/p></content></entry><entry><title>Week 8 - Chat feature and security improvements, Optimising Cognitive search indices</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-08/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-08/</id><published>2024-01-23T00:00:00+00:00</published><updated>2024-01-23T00:00:00+00:00</updated><content type="html">
+&lt;/p></content></entry><entry><title>Week 9 - Enhancements &amp; Deployment Preparation</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-09/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-09/</id><published>2024-01-30T00:00:00+00:00</published><updated>2024-01-30T00:00:00+00:00</updated><content type="html">
+&lt;p>The goal of Week 9 was to progress with the &amp;ldquo;Must Have&amp;rdquo; requirements. As more
+tasks are being moved to the &amp;ldquo;Done&amp;rdquo; section of the Kanban Board, the team
+started thinking about deployment. This is something to be done eventually, and
+thinking ahead is beneficial in this case as many bugs can arise when it comes
+to deployment.&lt;/p>
+&lt;p>The components addressed this week are webapp and uploader. Both of these are
+ready for deployment, which planned for next week.&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="webapp-enchancements"
+>
+Webapp enchancements
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-09/#webapp-enchancements" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Webapp enchancements" href="#webapp-enchancements">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>As the functionality of the webapp extends and gives the user more options (such
+as uploading images), it is important to provide an intuitive UI. We took
+inspiration from other chatbot applications such as ChatGPT and Gemini and made
+polishes described below:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h2 id="ui--websocket-polishes"
+>
+UI &amp;amp; WebSocket polishes
+&lt;/h2>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-09/#ui--websocket-polishes" class="gblog-post__anchor clip flex align-center" aria-label="Anchor UI &amp;amp; WebSocket polishes" href="#ui--websocket-polishes">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>The UI changes focus on providing the user with more information about what
+state the app is currently in. To achieve this, webapp now displays a
+placeholder message (&amp;ldquo;Processing image&amp;hellip;&amp;rdquo;) as an image is being processed,
+until genuine text is returned. In addition, if an image is currently selected
+its path will be shown in the input box. These changes can be seen in the
+images below.&lt;/p>
+&lt;p>Image path:&lt;/p>
+&lt;img src="img_path.png" alt="Image of new image send UI" width=860>
+&lt;p>Temporary bot message:&lt;/p>
+&lt;img src="processing_img.png" alt="Image of photo processing" width=500>
+&lt;p>As part of enhancing safety, as well as UX, typing and sending
+messages is disallowed under certain conditions - WebSocket disconnections,
+an image from the user curently being processed, and if an image is
+currently selected for upload. Crucially, whenever the WebSocket disconnects
+the webapp will try to reconnect it automatically. This change ensures that
+the user will not need to manually refresh the page in case of disconnections.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h2 id="chat-history"
+>
+Chat history
+&lt;/h2>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-09/#chat-history" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Chat history" href="#chat-history">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>The idea of this enhancement is to allow the user to continue a conversation
+that she has previously started. Before history was implemented, only messages
+sent in the current session would be saved locally; if the page was refreshed,
+then the conversation would be wiped. &lt;code>ChatContext&lt;/code> now has a
+&lt;code>fetchHistory(conversationId)&lt;/code> function to fetch the entire context based on
+the conversation belonging to the current user. This will allow users to see
+their previous messages sent in a different session or from a different device&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="uploader-enhancements"
+>
+Uploader enhancements
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-09/#uploader-enhancements" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Uploader enhancements" href="#uploader-enhancements">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>The uploader changes for this week are less comprehensive, but essential nonetheless.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h2 id="deployment-preparations"
+>
+Deployment Preparations
+&lt;/h2>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-09/#deployment-preparations" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Deployment Preparations" href="#deployment-preparations">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>Similar to the API key changes from &lt;a
+class="gblog-markdown__link"
+href="/diagnoseai-dev-blog/posts/week-08/#api-key-security"
+>Week 8&lt;/a>,
+the uploader is now internet ready, it does not expose any keys. Therefore,
+both frontends can now be deployed.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h2 id="uploader-calls-verification"
+>
+Uploader calls verification
+&lt;/h2>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-09/#uploader-calls-verification" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Uploader calls verification" href="#uploader-calls-verification">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>An important change that was started this week is integrating the call to
+verification inside the uploader. Development started last week and more
+details on the core function can be found on the
+&lt;a
+class="gblog-markdown__link"
+href="/diagnoseai-dev-blog/posts/week-08/#migrating-validated-documents-to-production-index"
+>Week 8&lt;/a>
+page. In essence, the Uploader will send an SDK trigger to the relevant Azure
+Function App to cause the selected document to be moved.&lt;/p>
+&lt;/li>
+&lt;/ul></content></entry><entry><title>Week 8 - Chat feature and security improvements, Optimising Cognitive search indices</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-08/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-08/</id><published>2024-01-23T00:00:00+00:00</published><updated>2024-01-23T00:00:00+00:00</updated><content type="html">
 &lt;p>This week (Monday was 22 January 2024) was focused on three key aspects of project development. Improving security of API keys in the webapp, enabling image support for the chat API, and migrating documents from validation vector indices into production.&lt;/p>
 &lt;div class="flex align-center gblog-post__anchorwrap">
 &lt;h1 id="api-key-security"
