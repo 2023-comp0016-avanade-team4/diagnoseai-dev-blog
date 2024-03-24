@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.123.7">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="atom"/><updated>2024-03-05T14:19:27+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Week 11 - Continuing Work Orders</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-11/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-11/</id><published>2024-02-19T00:00:00+00:00</published><updated>2024-02-19T00:00:00+00:00</updated><content type="html">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://gohugo.io/" version="0.124.1">Hugo</generator><title>DiagnoseAI Development Blog</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/" rel="alternate" type="text/html" title="html"/><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/feed.xml" rel="self" type="application/atom+xml" title="atom"/><updated>2024-03-24T17:18:00+00:00</updated><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/</id><entry><title>Week 11 - Continuing Work Orders</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-11/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-11/</id><published>2024-02-19T00:00:00+00:00</published><updated>2024-02-19T00:00:00+00:00</updated><content type="html">
 &lt;p>This week (Monday was 19 November 2024) was spent continuing the Work we started last week on Work Orders. Further work was needed in developing the Work Orders in the Uploader and Web App pages.&lt;/p>
 &lt;div class="flex align-center gblog-post__anchorwrap">
 &lt;h1 id="work-orders-in-uploader"
@@ -49,7 +49,171 @@ Work Orders in WebApp
 &lt;p class="md__image">
 &lt;img src="/diagnoseai-dev-blog/images/work-order-context.png" alt="Image of the Work Order context" />
 &lt;/p>
-&lt;/p></content></entry><entry><title>Week 9 - Enhancements &amp; Deployment Preparation</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-09/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-09/</id><published>2024-01-30T00:00:00+00:00</published><updated>2024-01-30T00:00:00+00:00</updated><content type="html">
+&lt;/p></content></entry><entry><title>Week 10 - Deployment</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-10/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-10/</id><published>2024-02-12T00:00:00+00:00</published><updated>2024-02-12T00:00:00+00:00</updated><content type="html">
+&lt;p>This week, there were two main tasks for our team:&lt;/p>
+&lt;ol>
+&lt;li>&lt;a
+class="gblog-markdown__link"
+href="#work-orders"
+>Work Orders&lt;/a>&lt;/li>
+&lt;li>&lt;a
+class="gblog-markdown__link"
+href="#deployment"
+>Deployment&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="work-orders"
+>
+Work Orders
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-10/#work-orders" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Work Orders" href="#work-orders">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>As defined by our client, a Work Order is a record that stores
+information about a job involving a particular type of machine. In
+particular, for our interests, it defines:&lt;/p>
+&lt;ol>
+&lt;li>The machine being worked on (i.e. Machine Name, Machine Model);&lt;/li>
+&lt;li>The engineer on the job (i.e. User ID).&lt;/li>
+&lt;/ol>
+&lt;p>Our application relies on Work Orders to further contextualize the
+conversation by only pulling in the documents that really matter to
+the job at hand.&lt;/p>
+&lt;p>To this end, we had four main sub-tasks:&lt;/p>
+&lt;ol>
+&lt;li>The Uploader interface needed a way to upload a document tied to a
+specific machine;&lt;/li>
+&lt;li>The Uploader interface, for the purposes of demonstration, should
+be able to create / delete work orders&lt;/li>
+&lt;li>CoreAPI needs to provide any connected interfaces access to all
+Work Orders owned by the user&lt;/li>
+&lt;li>The Web App interface needs to fetch all Work Orders&lt;/li>
+&lt;/ol>
+&lt;p>In our system, Work Orders are akin to individual conversations found
+in other chatbot + LLM applications like ChatGPT. Each Work Order
+defines one conversation.&lt;/p>
+&lt;p>We then defined the schema, using the &lt;code>sqlalchemy&lt;/code> ORM package so that
+we don&amp;rsquo;t have to deal with the database directly:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">WorkOrderModel&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Base&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">__tablename__&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;work_orders&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">order_id&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Mapped&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mapped_column&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">36&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">primary_key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">True&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">default&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">lambda&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">uuid4&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">user_id&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Mapped&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mapped_column&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">36&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span> &lt;span class="c1"># Assuming user_id is string from clerk&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">conversation_id&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Mapped&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mapped_column&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">36&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">default&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">lambda&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">uuid4&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">machine_id&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Mapped&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mapped_column&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">36&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">ForeignKey&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;machines.machine_id&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">task_name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Mapped&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mapped_column&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">255&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">task_desc&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Mapped&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mapped_column&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Text&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">created_at&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Mapped&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">DateTime&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mapped_column&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">DateTime&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">default&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">func&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">now&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span> &lt;span class="c1"># Automatically sets to current time&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">machine&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">relationship&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;MachineModel&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">back_populates&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;work_orders&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">MachineModel&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Base&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">__tablename__&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;machines&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">machine_id&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Mapped&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mapped_column&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">36&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">primary_key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">True&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">default&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">lambda&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">uuid4&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">manufacturer&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Mapped&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mapped_column&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">255&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">model&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Mapped&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mapped_column&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">255&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">work_orders&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">relationship&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;WorkOrderModel&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">back_populates&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;machine&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Here, each Work Order owns a Machine, while each Machine is associated
+to many Work Orders.&lt;/p>
+&lt;p>Here are some screenshots of the resultant handiwork:&lt;/p>
+&lt;p>&lt;p class="md__image">
+&lt;img src="/diagnoseai-dev-blog/images/2024-02-19_01.png" alt="Uploader Interface" />
+&lt;/p>
+&lt;/p>
+&lt;p>&lt;p class="md__image">
+&lt;img src="/diagnoseai-dev-blog/images/2024-02-19_02.png" alt="WebApp Interface" />
+&lt;/p>
+&lt;/p>
+&lt;div class="flex align-center gblog-post__anchorwrap">
+&lt;h1 id="deployment"
+>
+Deployment
+&lt;/h1>
+&lt;a data-clipboard-text="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-10/#deployment" class="gblog-post__anchor clip flex align-center" aria-label="Anchor Deployment" href="#deployment">
+&lt;svg class="gblog-icon gblog_link">&lt;use xlink:href="#gblog_link">&lt;/use>&lt;/svg>
+&lt;/a>
+&lt;/div>
+&lt;p>For the past few weeks, we have been doing our best to migrate
+endpoints and keys to the server-side so that we can publicly deploy
+the frontends.&lt;/p>
+&lt;p>The CoreAPI was already deployed to begin with, given it&amp;rsquo;s serverless
+nature; however, the frontends had never seen the light of the day.&lt;/p>
+&lt;p>The URLs are not made public for obvious reasons, but we are proud to
+announce that we have successfully deployed the two applications to
+the public.&lt;/p>
+&lt;p>Right now, our deployment pipeline looks like this:&lt;/p>
+&lt;p>&lt;p class="md__image">
+&lt;img src="/diagnoseai-dev-blog/images/2024-02-19_03.png" alt="GitHub Actions" />
+&lt;/p>
+&lt;/p>
+&lt;p>On push to &lt;code>main&lt;/code>, this GitHub Actions will trigger, which builds the
+frontend and packages them. We found that the default GitHub Actions
+workflow file was not sufficient for our use; hence, we modified it so
+that it worked for our use case.&lt;/p>
+&lt;p>In particular, we first had to modify our NextJS build outputs to
+&lt;code>standalone&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl">&lt;span class="cm">/** @type {import(&amp;#39;next&amp;#39;).NextConfig} */&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">const&lt;/span> &lt;span class="nx">nextConfig&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">reactStrictMode&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="kc">true&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">output&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s2">&amp;#34;standalone&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">module&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">exports&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">nextConfig&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Then, we had to modify the job for GitHub actions to also package our
+static resources:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">npm install and build&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">env&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">CLERK_SECRET_KEY&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">${{ secrets.CLERK_SECRET_KEY }}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">run&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">|&lt;/span>&lt;span class="sd">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sd"> npm install
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sd"> npm run build
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sd"> mkdir -p .next/standalone/.next
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sd"> cp -r .next/static .next/standalone/.next/&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Zip artifact for deployment&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">run&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">|&lt;/span>&lt;span class="sd">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sd"> cd .next/standalone/
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sd"> zip ../../release.zip ./* .next -r
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sd"> cd -&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>At the same time, we also had to pass the
+&lt;code>NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY&lt;/code> secret so that Clerk could be
+properly built for production deployment.&lt;/p>
+&lt;p>After which, we had to do a bunch of Azure changes, namely:&lt;/p>
+&lt;ol>
+&lt;li>In Core API, we had to adjust our &lt;code>AZP_LIST&lt;/code> for Clerk (the
+accepted domains that Clerk works on) to include our new deployed
+domains;&lt;/li>
+&lt;li>Create new Web Apps on Azure to support both the uploader and the
+webapp. We experimented with Static Web Apps with their &lt;a
+class="gblog-markdown__link"
+href="https://learn.microsoft.com/en-us/azure/static-web-apps/deploy-nextjs-hybrid"
+>preview hybrid
+Next.JS
+support&lt;/a>,
+but it did not properly support the authentication middleware used
+by Clerk; hence, we decided to go for Web Apps instead. In terms of
+cost, Static Web Apps would have been less expensive; hence, once
+the feature comes out of preview, we will advise the client to move
+to Static Web Apps&lt;/li>
+&lt;li>Create firewall rules on our Azure SQL Database to allow connection
+from any Azure resource, and also the IP address of the Uploader
+Web App.&lt;/li>
+&lt;/ol></content></entry><entry><title>Week 9 - Enhancements &amp; Deployment Preparation</title><link href="https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-09/" rel="alternate" type="text/html" hreflang="en"/><id>https://2023-comp0016-avanade-team4.github.io/diagnoseai-dev-blog/posts/week-09/</id><published>2024-01-30T00:00:00+00:00</published><updated>2024-01-30T00:00:00+00:00</updated><content type="html">
 &lt;p>The goal of Week 9 was to progress with the &amp;ldquo;Must Have&amp;rdquo; requirements. As more
 tasks are being moved to the &amp;ldquo;Done&amp;rdquo; section of the Kanban Board, the team
 started thinking about deployment. This is something to be done eventually, and
